@@ -15,6 +15,7 @@ func main() {
 
 }
 
+// fib calculates the fibonacci terms of a given number x
 func fib(x int) int {
 	if x == 0 {
 		return 0
