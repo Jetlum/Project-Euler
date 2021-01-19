@@ -12,7 +12,6 @@ func main() {
 			fmt.Printf("Fibonacci %v = %v\n", x, sum)
 		}
 	}
-
 }
 
 // fib calculates the fibonacci terms of a given number x

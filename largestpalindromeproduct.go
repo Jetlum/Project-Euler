@@ -22,7 +22,6 @@ func main() {
 			}
 		}
 	}
-
 }
 
 // ReverseNumber reverses the given number n
