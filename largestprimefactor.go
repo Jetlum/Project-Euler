@@ -12,7 +12,7 @@ func main() {
 
 }
 
-// Get all prime factors of  given nmumber n
+// PrimeFactors gets all prime factors of  given nmumber n
 func PrimeFactors(n int) (pfs []int) {
 	// Get the number of 2s that divide n
 	for n%2 == 0 {
