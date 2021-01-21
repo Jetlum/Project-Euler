@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// GCD finds greatest common divisor (GCD) via Euclidean algorithm
+// greatest common divisor (GCD) via Euclidean algorithm
 func GCD(a, b int) int {
 	for b != 0 {
 		t := b
@@ -14,17 +14,15 @@ func GCD(a, b int) int {
 	return a
 }
 
-// LCM finds Least Common Multiple (LCM) via GCD
-func LCM(a, b int, integers ...int) int {
-	result := a * b / GCD(a, b)
-
-	for i := 0; i < len(integers); i++ {
-		result = LCM(result, integers[i])
-	}
-
-	return result
+// find Least Common Multiple (LCM) via GCD
+func LCM(a, b int) int {
+	return a * b / GCD(a, b)
 }
 
 func main() {
-	fmt.Println(LCM(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))
+	result := 1
+	for j := 2; j <= 20; j++ {
+		result = LCM(result, j)
+	}
+	fmt.Println(result)
 }
