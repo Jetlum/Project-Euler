@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// SieveOfEratosthenes finds all prime numbers up to any given limit
 func SieveOfEratosthenes(n int) []int {
 	// Create a boolean array "prime[0..n]" and initialize
 	// all entries it as true. A value in prime[i] will
