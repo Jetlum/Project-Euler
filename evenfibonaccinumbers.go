@@ -6,6 +6,8 @@ import (
 
 func main() {
 	sum := 0
+	// Iterate till a number to get the even terms whose values do not exceed four million,
+	// find the sum of the even-valued terms
 	for x := 0; x < 35; x++ {
 		if fib(x)%2 == 0 {
 			sum += fib(x)
