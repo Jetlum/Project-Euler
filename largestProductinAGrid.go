@@ -53,6 +53,25 @@ func parseGrid20x20(g string) (grid [][]int64) {
 }
 
 func main() {
+	var max int64
+	var maxi, maxj int
+	var a, b, c, d int64
 	grid := parseGrid20x20(grid20x20)
 	fmt.Println(grid)
+	for i := 3; i <= 19; i++ {
+		for j := 0; j <= 16; j++ {
+			prd := grid[i][j] * grid[i-1][j+1] * grid[i-2][j+2] * grid[i-3][j+3]
+			if prd > max {
+				max = prd
+				maxi = i
+				maxj = j
+
+				a = grid[i][j]
+				b = grid[i-1][j+1]
+				c = grid[i-2][j+2]
+				d = grid[i-3][j+3]
+			}
+		}
+	}
+	fmt.Println(max, maxi, maxj, a, b, c, d)
 }
