@@ -29,6 +29,14 @@ const grid20x20 = `
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 `
 
+func main() {
+	var max int64
+	var maxi, maxj int
+	var a, b, c, d int64
+	grid := parseGrid20x20(grid20x20)
+	findGreatesProduct(grid)
+}
+
 func parseLine(l string) []int64 {
 	var dl []int64
 
@@ -52,12 +60,71 @@ func parseGrid20x20(g string) (grid [][]int64) {
 	return
 }
 
-func main() {
+func printMaxProductInfo(m int64, i, j int, a, b, c, d int64, dir string) {
+	fmt.Println(m)
+	fmt.Println(i, j)
+	fmt.Println("direction: ", dir)
+	fmt.Println(a, b, c, d)
+}
+
+func findGreatesProduct(grid [][]int64) {
 	var max int64
 	var maxi, maxj int
+	var direction string
 	var a, b, c, d int64
-	grid := parseGrid20x20(grid20x20)
-	fmt.Println(grid)
+
+	// left-right
+	for i := 0; i <= 19; i++ {
+		for j := 0; j <= 16; j++ {
+			prd := grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3]
+			if prd > max {
+				max = prd
+				maxi = i
+				maxj = j
+				direction = "left-right"
+				a = grid[i][j]
+				b = grid[i][j+1]
+				c = grid[i][j+2]
+				d = grid[i][j+3]
+			}
+		}
+	}
+
+	// up-down
+	for i := 0; i <= 16; i++ {
+		for j := 0; j <= 19; j++ {
+			prd := grid[i][j] * grid[i+1][j] * grid[i+2][j] * grid[i+3][j]
+			if prd > max {
+				max = prd
+				maxi = i
+				maxj = j
+				direction = "up-down"
+				a = grid[i][j]
+				b = grid[i+1][j]
+				c = grid[i+2][j]
+				d = grid[i+3][j]
+			}
+		}
+	}
+
+	// diagonal: left*up to right*down
+	for i := 0; i <= 16; i++ {
+		for j := 0; j <= 16; j++ {
+			prd := grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3]
+			if prd > max {
+				max = prd
+				maxi = i
+				maxj = j
+				direction = "left*up to right*down"
+				a = grid[i][j]
+				b = grid[i+1][j+1]
+				c = grid[i+2][j+2]
+				d = grid[i+3][j+3]
+			}
+		}
+	}
+
+	// diagonal: right*up to left*down
 	for i := 3; i <= 19; i++ {
 		for j := 0; j <= 16; j++ {
 			prd := grid[i][j] * grid[i-1][j+1] * grid[i-2][j+2] * grid[i-3][j+3]
@@ -65,7 +132,7 @@ func main() {
 				max = prd
 				maxi = i
 				maxj = j
-
+				direction = "right*up to left*down"
 				a = grid[i][j]
 				b = grid[i-1][j+1]
 				c = grid[i-2][j+2]
@@ -73,5 +140,6 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(max, maxi, maxj, a, b, c, d)
+
+	printMaxProductInfo(max, maxi, maxj, a, b, c, d, direction)
 }
