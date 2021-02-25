@@ -30,13 +30,11 @@ const grid20x20 = `
 `
 
 func main() {
-	var max int64
-	var maxi, maxj int
-	var a, b, c, d int64
 	grid := parseGrid20x20(grid20x20)
-	findGreatesProduct(grid)
+	findGreatestProduct(grid)
 }
 
+// parseLine removes the 0 from the grid and returns a 2d array
 func parseLine(l string) []int64 {
 	var dl []int64
 
@@ -51,6 +49,7 @@ func parseLine(l string) []int64 {
 	return dl
 }
 
+// parseGrid20x20 splits the string
 func parseGrid20x20(g string) (grid [][]int64) {
 	lines := strings.Split(g, "\n")
 	for _, line := range lines[1 : len(lines)-1] {
@@ -60,6 +59,7 @@ func parseGrid20x20(g string) (grid [][]int64) {
 	return
 }
 
+// printMaxProduction prints the variables and the direction string
 func printMaxProductInfo(m int64, i, j int, a, b, c, d int64, dir string) {
 	fmt.Println(m)
 	fmt.Println(i, j)
@@ -67,7 +67,8 @@ func printMaxProductInfo(m int64, i, j int, a, b, c, d int64, dir string) {
 	fmt.Println(a, b, c, d)
 }
 
-func findGreatesProduct(grid [][]int64) {
+// findGreatestProduct finds the greatest product in the grid searching in every direction
+func findGreatestProduct(grid [][]int64) {
 	var max int64
 	var maxi, maxj int
 	var direction string
