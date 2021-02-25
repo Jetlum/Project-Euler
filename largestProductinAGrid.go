@@ -141,6 +141,5 @@ func findGreatestProduct(grid [][]int64) {
 			}
 		}
 	}
-
 	printMaxProductInfo(max, maxi, maxj, a, b, c, d, direction)
 }
