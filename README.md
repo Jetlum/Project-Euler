@@ -1,2 +1,2 @@
 # Project-Euler
-Solutions of all problems in https://projecteuler.net/ using Go
+Solutions of problems in https://projecteuler.net/ using Go
